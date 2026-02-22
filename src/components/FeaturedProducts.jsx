@@ -1,32 +1,34 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import ProductCard from "./ProductCard";
 
 export default function FeaturedProducts() {
   const [products, setProducts] = useState([]);
 
-useEffect(() => {
- axios.get("https://furniture-store-backend-muci.onrender.com/api/products/")
-    .then(res => {
-      // ✅ Home page साठी फक्त 3 products
-      setProducts(res.data.slice(0, 3));
-    });
-}, []);
+  useEffect(() => {
+    api.get("products/")
+      .then(res => {
+        setProducts(res.data.slice(0, 3));
+      })
+      .catch(err => console.error(err));
+  }, []);
 
   return (
-    <section className="bg-gray-50 py-20">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-gray-50 py-16 sm:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-        <div className="mb-14">
-          <h2 className="text-3xl font-semibold">
+        {/* HEADER */}
+        <div className="mb-10 sm:mb-14 text-center md:text-left">
+          <h2 className="text-2xl sm:text-3xl text-black font-semibold">
             Featured Products
           </h2>
-          <p className="text-gray-500 mt-2">
+          <p className="text-gray-500 mt-2 text-sm sm:text-base">
             Handpicked furniture for modern homes
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {/* GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
           {products.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}

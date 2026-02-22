@@ -7,8 +7,7 @@ export default function Testimonials() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api
-      .get("testimonials/")
+    api.get("testimonials/")
       .then((res) => {
         setTestimonials(res.data);
         setLoading(false);
@@ -20,22 +19,22 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="bg-black py-24">
-      <div className="max-w-7xl mx-auto px-5 sm:px-6">
+    <section className="bg-black py-16 sm:py-20 md:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* HEADER */}
-        <div className="text-center mb-16">
-          <p className="text-orange-600 font-pmedium mb-2">
+        <div className="text-center mb-10 sm:mb-14 md:mb-16">
+          <p className="text-orange-600 font-pmedium mb-2 text-sm sm:text-base">
             Testimonials
           </p>
-          <h2 className="text-3xl sm:text-4xl font-pbold text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-pbold text-white">
             What Our Customers Say
           </h2>
         </div>
 
         {/* LOADING */}
         {loading && (
-          <p className="text-center text-gray-400">
+          <p className="text-center text-gray-400 animate-pulse">
             Loading testimonials...
           </p>
         )}
@@ -49,7 +48,7 @@ export default function Testimonials() {
 
         {/* GRID */}
         {!loading && testimonials.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
             {testimonials.map((item) => (
               <TestimonialCard key={item.id} data={item} />
             ))}

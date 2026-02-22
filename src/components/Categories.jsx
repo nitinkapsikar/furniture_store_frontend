@@ -12,21 +12,21 @@ export default function Categories() {
   }, []);
 
   return (
-    <section className="bg-white py-20">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-white py-16 sm:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-        {/* SECTION HEADER */}
-        <div className="mb-14 text-center">
-          <p className="text-orange-600 font-pmedium mb-2">
+        {/* HEADER */}
+        <div className="mb-10 sm:mb-14 text-center">
+          <p className="text-orange-600 font-pmedium mb-2 text-sm sm:text-base">
             Browse Categories
           </p>
-          <h2 className="text-3xl md:text-4xl font-pbold text-black">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-pbold text-black">
             Furniture for Every Space
           </h2>
         </div>
 
-        {/* CATEGORY GRID */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10">
+        {/* GRID */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
           {categories.map((cat) => (
             <CategoryCard
               key={cat.id}
